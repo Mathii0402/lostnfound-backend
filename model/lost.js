@@ -5,7 +5,7 @@ const ExpensesSchema =new mongoose.Schema({
     name:{
         type:String,
         trim:true,
-        required:[true,'please vro']
+        required:[true,'please provide name']
     },
     amount:{
         type:Number,
@@ -18,6 +18,10 @@ const ExpensesSchema =new mongoose.Schema({
         type:String 
     },
     date:
+    {
+        type:String
+    },
+    place:
     {
         type:String
     }

@@ -90,8 +90,8 @@ exports.getExpensesById = async (req, res, next) => {
 };
 exports.addLost = async (req, res, next) => {
     try {
-      const { name, amount, dec ,title} = req.body;
-      console.log(name, amount, dec,title);
+      const { name, amount, dec ,title,place} = req.body;
+      console.log(name, amount, dec,title,place);
       const expense = await Expenses.create(req.body);
       return res.status(201).json({
    data:expense
