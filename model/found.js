@@ -1,0 +1,19 @@
+const mongoose =require('mongoose');
+const FoundsSchema =new mongoose.Schema({
+    name:{
+        type:String,
+        trim:true,
+        required:[true,'please provide name']
+    },
+    number:{
+        type:Number,
+    },
+    place:{
+        type:String
+    },
+    address:{
+        type:String 
+    }
+
+});
+module.exports =mongoose.model('founds',FoundsSchema);

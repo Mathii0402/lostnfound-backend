@@ -55,6 +55,7 @@
 
 // const request=require("../../src/")
 const Expenses = require("../model/lost");
+const Founds = require("../model/found")
 exports.getLost = async (req, res, next) => {
   try {
     const expenses = await Expenses.find();
@@ -99,10 +100,27 @@ exports.addLost = async (req, res, next) => {
     } catch (err) {
       return res.status(500).json({
         success: false,
-        error: "srv error",
+        error: "Lost not created",
       });
     }
   };
+exports.addFound = async (req, res, next) => {
+  console.log("hu")
+    try {
+      const { name, place,address,number} = req.body;
+      console.log(name, place,address,number);
+      const founds = await Founds.create(req.body);
+      return res.status(201).json({
+   data:founds
+      });
+    } catch (err) {
+      return res.status(500).json({
+        success: false,
+        error: "Found not created",
+      });
+    }
+  };
+
 //-------------------BY USING FIND ID AND DELETE-------------------------------
 exports.deleteExpensesID = async (req, res, next) => {
   try {
@@ -158,7 +176,7 @@ exports.deleteExpensesID = async (req, res, next) => {
   };
   
   exports.Loggerfunction = async (req, res, next) => {
-  console.log("logging");
+  // console.log("logging");
   console.log(req.method,req.url);
   next();
   };

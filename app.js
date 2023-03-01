@@ -42,6 +42,7 @@ const {
   getLost,
   getExpensesById,
   addLost,
+  addFound,
   deleteExpensesID,
   UpdateExpensesID,
   checkAdmin,
@@ -57,13 +58,14 @@ db.on("error", console.error.bind(console, "conn err"));
 db.once("open", function () {
   console.log("connected");
 });
-
+ 
 app.get("/api/v1/expenses", getLost);
 app.get("/api/v1/expenses/:id", getExpensesById);
 app.post("/api/v1/expenses",  addLost); //checkAdmin is a middle ware
 app.delete("/api/v1/expenses/:id", deleteExpensesID);
 app.put("/api/v1/expenses/:id", UpdateExpensesID);
+app.post("/api/v1/found", addFound);
 
 app.listen(port, () => {
   console.log(`port is ${port}`);
-});
+}); 
