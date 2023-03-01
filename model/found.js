@@ -5,6 +5,9 @@ const FoundsSchema =new mongoose.Schema({
         trim:true,
         required:[true,'please provide name']
     },
+    objid:{
+        type:String,
+    },
     number:{
         type:Number,
     },
@@ -16,4 +19,4 @@ const FoundsSchema =new mongoose.Schema({
     }
 
 });
-module.exports =mongoose.model('founds',FoundsSchema);
+module.exports = mongoose.model('founds',FoundsSchema);

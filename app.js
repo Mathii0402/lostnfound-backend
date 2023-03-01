@@ -40,7 +40,7 @@ const port = process.env.PORT || 3002;
 const db = mongoose.connection;
 const {
   getLost,
-  getExpensesById,
+  getObjbyId,
   addLost,
   addFound,
   deleteExpensesID,
@@ -60,7 +60,7 @@ db.once("open", function () {
 });
  
 app.get("/api/v1/expenses", getLost);
-app.get("/api/v1/expenses/:id", getExpensesById);
+app.get("/api/v1/object/:id", getObjbyId);
 app.post("/api/v1/expenses",  addLost); //checkAdmin is a middle ware
 app.delete("/api/v1/expenses/:id", deleteExpensesID);
 app.put("/api/v1/expenses/:id", UpdateExpensesID);

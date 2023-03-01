@@ -2,6 +2,10 @@
 
 const mongoose =require('mongoose');
 const ExpensesSchema =new mongoose.Schema({
+    objid:
+    {
+        type:String
+    },
     name:{
         type:String,
         trim:true,

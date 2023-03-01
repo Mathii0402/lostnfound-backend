@@ -72,29 +72,42 @@ exports.getLost = async (req, res, next) => {
   }
 };
 
-exports.getExpensesById = async (req, res, next) => {
+exports.getObjbyId = async (req, res, next) => {
   try {
-    const expense = await Expenses.findById(req.params.id);
-    if (!expense) {
+    const object = await Expenses.findById(req.params.objid);
+    if (!object) {
       return res.status(404).json({
-        success: false,
-        error: "no expen",
+        status: false,
+        error: "object not found",
       });
     }
-    return res.status(200).json(expense);
+    return res.status(200).json({
+      status:true,
+      data:object});
   } catch (err) {
     return res.status(500).json({
-      success: true,
-      error: "srv error",
+      success: false,
+
     });
   }
 };
 exports.addLost = async (req, res, next) => {
     try {
-      const { name, amount, dec ,title,place} = req.body;
-      console.log(name, amount, dec,title,place);
-      const expense = await Expenses.create(req.body);
-      return res.status(201).json({
+      const { name, amount, dec ,title,place,} = req.body;
+      
+      console.log('d',name, amount, dec,title,place);
+      const count = await Expenses.estimatedDocumentCount();
+      console.log(count);
+      const newcnt = (count+1).toString();
+      const newbody ={
+        objid:newcnt,
+        ...req.body
+
+      }
+      
+      const expense = await Expenses.create(newbody);
+
+      return res.status(201).json({   
    data:expense
       });
     } catch (err) {
