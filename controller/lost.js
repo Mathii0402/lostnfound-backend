@@ -74,7 +74,7 @@ exports.getLost = async (req, res, next) => {
 
 exports.getObjbyId = async (req, res, next) => {
   try {
-    const object = await Expenses.findById(req.params.objid);
+    const object = await Expenses.find({objid:req.params.id});
     if (!object) {
       return res.status(404).json({
         status: false,
