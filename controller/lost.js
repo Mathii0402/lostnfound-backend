@@ -91,6 +91,25 @@ exports.getObjbyId = async (req, res, next) => {
     });
   }
 };
+exports.getObjbyId2 = async (req, res, next) => {
+  try {
+    const object = await Expenses.find({objid:req.params.id});
+    if (!object) {
+      return res.status(404).json({
+        status: false,
+        error: "object not found",
+      });
+    }
+    return res.status(200).json({
+      status:true,
+      data:object});
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+
+    });
+  }
+};
 exports.addLost = async (req, res, next) => {
     try {
       const { name, amount, dec ,title,place,} = req.body;

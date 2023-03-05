@@ -41,6 +41,7 @@ const db = mongoose.connection;
 const {
   getLost,
   getObjbyId,
+  getObjbyId2,
   addLost,
   addFound,
   deleteExpensesID,
@@ -61,6 +62,7 @@ db.once("open", function () {
  
 app.get("/api/v1/expenses", getLost);
 app.get("/api/v1/object/:id", getObjbyId);
+app.get("/api/v1/lostobject/:id", getObjbyId2);
 app.post("/api/v1/expenses",  addLost); //checkAdmin is a middle ware
 app.delete("/api/v1/expenses/:id", deleteExpensesID);
 app.put("/api/v1/expenses/:id", UpdateExpensesID);
