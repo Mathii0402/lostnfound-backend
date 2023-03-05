@@ -12,7 +12,7 @@ const ExpensesSchema =new mongoose.Schema({
         required:[true,'please provide name']
     },
     amount:{
-        type:Number,
+        type:String,
         required:[true,'please positive']
     },
     desc:{
